@@ -1,7 +1,5 @@
 # Instalador Whaticket SaaS - Redis em Docker
 
-* Atualização pelo terminal parece não funcionar.
-
 ```bash
 sudo apt -y update && apt -y upgrade
 ```
