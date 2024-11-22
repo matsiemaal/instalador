@@ -1,15 +1,15 @@
 #!/bin/bash
 # 
-# functions for setting up app frontend
+# Functies voor het instellen van de app frontend
 
 #######################################
-# installed node packages
-# Arguments:
-#   None
+# Installeert Node-pakketten
+# Argumenten:
+#   Geen
 #######################################
 frontend_node_dependencies() {
   print_banner
-  printf "${WHITE} 💻 Instalando dependências do frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Frontend-afhankelijkheden installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -23,13 +23,13 @@ EOF
 }
 
 #######################################
-# compiles frontend code
-# Arguments:
-#   None
+# Compileert frontend-code
+# Argumenten:
+#   Geen
 #######################################
 frontend_node_build() {
   print_banner
-  printf "${WHITE} 💻 Compilando o código do frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Frontend-code compileren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -43,13 +43,13 @@ EOF
 }
 
 #######################################
-# updates frontend code
-# Arguments:
-#   None
+# Werkt frontend-code bij
+# Argumenten:
+#   Geen
 #######################################
 frontend_update() {
   print_banner
-  printf "${WHITE} 💻 Atualizando o frontend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Frontend bijwerken...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -69,20 +69,19 @@ EOF
   sleep 2
 }
 
-
 #######################################
-# sets frontend environment variables
-# Arguments:
-#   None
+# Stelt omgevingsvariabelen in voor de frontend
+# Argumenten:
+#   Geen
 #######################################
 frontend_set_env() {
   print_banner
-  printf "${WHITE} 💻 Configurando variáveis de ambiente (frontend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Omgevingsvariabelen instellen (frontend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-  # ensure idempotency
+  # Zorg voor idempotentie
   backend_url=$(echo "${backend_url/https:\/\/}")
   backend_url=${backend_url%%/*}
   backend_url=https://$backend_url
@@ -90,7 +89,7 @@ frontend_set_env() {
 sudo su - deploy << EOF
   cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/.env
 REACT_APP_BACKEND_URL=${backend_url}
-REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
+REACT_APP_HOURS_CLOSE_TICKETS_AUTO=24
 [-]EOF
 EOF
 
@@ -98,7 +97,7 @@ EOF
 
 sudo su - deploy << EOF
   cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/server.js
-//simple express server to run frontend production build;
+// Eenvoudige express-server om frontend productiebouw uit te voeren
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -115,13 +114,13 @@ EOF
 }
 
 #######################################
-# starts pm2 for frontend
-# Arguments:
-#   None
+# Start pm2 voor frontend
+# Argumenten:
+#   Geen
 #######################################
 frontend_start_pm2() {
   print_banner
-  printf "${WHITE} 💻 Iniciando pm2 (frontend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 pm2 starten (frontend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -132,7 +131,7 @@ frontend_start_pm2() {
   pm2 save
 EOF
 
- sleep 2
+  sleep 2
   
   sudo su - root <<EOF
    pm2 startup
@@ -142,13 +141,13 @@ EOF
 }
 
 #######################################
-# sets up nginx for frontend
-# Arguments:
-#   None
+# Stelt nginx in voor frontend
+# Argumenten:
+#   Geen
 #######################################
 frontend_nginx_setup() {
   print_banner
-  printf "${WHITE} 💻 Configurando nginx (frontend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 nginx instellen (frontend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2

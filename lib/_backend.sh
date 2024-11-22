@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# functions for setting up app backend
+# Functies voor het instellen van de backend van de app
 #######################################
-# creates REDIS db using docker
-# Arguments:
-#   None
+# Maakt REDIS-database aan met Docker
+# Argumenten:
+#   Geen
 #######################################
 backend_redis_create() {
   print_banner
-  printf "${WHITE} 💻 Criando Redis & Banco Postgres...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Redis & Postgres-database aanmaken...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -28,27 +28,26 @@ backend_redis_create() {
 EOF
 
 sleep 2
-
 }
 
 #######################################
-# sets environment variable for backend.
-# Arguments:
-#   None
+# Stelt omgevingsvariabelen in voor de backend.
+# Argumenten:
+#   Geen
 #######################################
 backend_set_env() {
   print_banner
-  printf "${WHITE} 💻 Configurando variáveis de ambiente (backend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Omgevingsvariabelen instellen (backend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-  # ensure idempotency
+  # Zorg voor idempotentie
   backend_url=$(echo "${backend_url/https:\/\/}")
   backend_url=${backend_url%%/*}
   backend_url=https://$backend_url
 
-  # ensure idempotency
+  # Zorg voor idempotentie
   frontend_url=$(echo "${frontend_url/https:\/\/}")
   frontend_url=${frontend_url%%/*}
   frontend_url=https://$frontend_url
@@ -80,9 +79,9 @@ CONNECTIONS_LIMIT=${max_whats}
 CLOSED_SEND_BY_ME=true
 
 MAIL_HOST="smtp.hostinger.com"
-MAIL_USER="contato@seusite.com"
-MAIL_PASS="senha"
-MAIL_FROM="Recuperar Senha <contato@seusite.com>"
+MAIL_USER="contact@uwsite.com"
+MAIL_PASS="wachtwoord"
+MAIL_FROM="Wachtwoord Herstellen <contact@uwsite.com>"
 MAIL_PORT="465"
 
 [-]EOF
@@ -92,13 +91,13 @@ EOF
 }
 
 #######################################
-# installs node.js dependencies
-# Arguments:
-#   None
+# Installeert Node.js-afhankelijkheden
+# Argumenten:
+#   Geen
 #######################################
 backend_node_dependencies() {
   print_banner
-  printf "${WHITE} 💻 Instalando dependências do backend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Backend-afhankelijkheden installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -112,13 +111,13 @@ EOF
 }
 
 #######################################
-# compiles backend code
-# Arguments:
-#   None
+# Compileert backend-code
+# Argumenten:
+#   Geen
 #######################################
 backend_node_build() {
   print_banner
-  printf "${WHITE} 💻 Compilando o código do backend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Backend-code compileren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -132,22 +131,22 @@ EOF
 }
 
 #######################################
-# updates frontend code
-# Arguments:
-#   None
+# Werkt backend bij
+# Argumenten:
+#   Geen
 #######################################
 backend_update() {
   print_banner
-  printf "${WHITE} 💻 Atualizando o backend...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Backend bijwerken...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/${empresa_atualizar}
-  pm2 stop ${empresa_atualizar}-backend
+  cd /home/deploy/${bedrijf_bijwerken}
+  pm2 stop ${bedrijf_bijwerken}-backend
   git pull
-  cd /home/deploy/${empresa_atualizar}/backend
+  cd /home/deploy/${bedrijf_bijwerken}/backend
   npm install
   npm update -f
   npm install @types/fs-extra
@@ -156,7 +155,7 @@ backend_update() {
   npx sequelize db:migrate
   npx sequelize db:migrate
   npx sequelize db:seed
-  pm2 start ${empresa_atualizar}-backend
+  pm2 start ${bedrijf_bijwerken}-backend
   pm2 save 
 EOF
 
@@ -164,13 +163,13 @@ EOF
 }
 
 #######################################
-# runs db migrate
-# Arguments:
-#   None
+# Voert database-migratie uit
+# Argumenten:
+#   Geen
 #######################################
 backend_db_migrate() {
   print_banner
-  printf "${WHITE} 💻 Executando db:migrate...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 db:migrate uitvoeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -184,13 +183,13 @@ EOF
 }
 
 #######################################
-# runs db seed
-# Arguments:
-#   None
+# Voert database-seeding uit
+# Argumenten:
+#   Geen
 #######################################
 backend_db_seed() {
   print_banner
-  printf "${WHITE} 💻 Executando db:seed...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 db:seed uitvoeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -204,14 +203,13 @@ EOF
 }
 
 #######################################
-# starts backend using pm2 in 
-# production mode.
-# Arguments:
-#   None
+# Start backend met pm2 in productieomgeving.
+# Argumenten:
+#   Geen
 #######################################
 backend_start_pm2() {
   print_banner
-  printf "${WHITE} 💻 Iniciando pm2 (backend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 pm2 starten (backend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -225,13 +223,13 @@ EOF
 }
 
 #######################################
-# updates frontend code
-# Arguments:
-#   None
+# Stelt nginx in voor backend
+# Argumenten:
+#   Geen
 #######################################
 backend_nginx_setup() {
   print_banner
-  printf "${WHITE} 💻 Configurando nginx (backend)...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 nginx instellen (backend)...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2

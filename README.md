@@ -1,25 +1,35 @@
-# Instalador Whaticket SaaS - Redis em Docker
+Hier is de vertaling en aanpassing naar het Nederlands:
 
+---
+
+# **Whaticket SaaS Installer - Redis in Docker**
+
+### Systeem bijwerken:
 ```bash
 sudo apt -y update && apt -y upgrade
 ```
 
-FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
-
+### **DOWNLOADEN VAN DE INSTALLER & STARTEN VAN DE EERSTE INSTALLATIE**  
+*(Gebruik dit commando alleen voor de eerste installatie):*
 ```bash
-sudo apt install -y git && git clone https://github.com/launcherbr/instalador.git instalador && sudo chmod -R 777 instalador  && cd instalador  && sudo ./install_primaria
+sudo apt install -y git && git clone https://github.com/launcherbr/instalador.git instalador && sudo chmod -R 777 instalador && cd instalador && sudo ./install_primaria
 ```
 
-ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
-
+### **TOEGANG TOT DE INSTALLATIEMAP & STARTEN VAN EXTRA INSTALLATIES**  
+*(Gebruik dit commando voor de tweede of volgende installaties):*
 ```bash
-cd instalador  && sudo ./install_instancia
+cd instalador && sudo ./install_instancia
 ```
 
-## Requisitos
+---
 
-| --- | Mínimo | Recomendado |
-| --- | --- | --- |
-| Node JS | 20.x | 20.x |
-| Ubuntu | 20.x | 20.x |
-| Memória RAM | 4Gb | 8Gb |  
+## **Vereisten**
+
+| **Component**     | **Minimaal** | **Aanbevolen** |
+|--------------------|--------------|-----------------|
+| **Node.js**       | 20.x         | 20.x           |
+| **Ubuntu**        | 20.x         | 20.x           |
+| **RAM-geheugen**  | 4 GB         | 8 GB           |
+
+---
+

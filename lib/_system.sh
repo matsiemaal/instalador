@@ -1,15 +1,15 @@
 #!/bin/bash
 # 
-# system management
+# Systeembeheer
 
 #######################################
-# creates user
-# Arguments:
-#   None
+# Maakt een gebruiker aan
+# Argumenten:
+#   Geen
 #######################################
 system_create_user() {
   print_banner
-  printf "${WHITE} 💻 Agora, vamos criar o usuário para a instancia...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Nu gaan we een gebruiker maken voor de instantie...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -23,15 +23,14 @@ EOF
 }
 
 #######################################
-# clones repostories using git
-# Arguments:
-#   None
+# Clone repositories met Git
+# Argumenten:
+#   Geen
 #######################################
 system_git_clone() {
   print_banner
-  printf "${WHITE} 💻 Fazendo download do código Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Downloaden van de Whaticket-code...${GRAY_LIGHT}"
   printf "\n\n"
-
 
   sleep 2
 
@@ -43,13 +42,13 @@ EOF
 }
 
 #######################################
-# updates system
-# Arguments:
-#   None
+# Update systeem
+# Argumenten:
+#   Geen
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Systeem bijwerken voor Whaticket...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -62,16 +61,14 @@ EOF
   sleep 2
 }
 
-
-
 #######################################
-# delete system
-# Arguments:
-#   None
+# Verwijder systeem
+# Argumenten:
+#   Geen
 #######################################
 deletar_tudo() {
   print_banner
-  printf "${WHITE} 💻 Vamos deletar o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Verwijderen van Whaticket...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -102,22 +99,20 @@ EOF
   sleep 2
 
   print_banner
-  printf "${WHITE} 💻 Remoção da Instancia/Empresa ${empresa_delete} realizado com sucesso ...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Verwijderen van instantie/bedrijf ${empresa_delete} is succesvol uitgevoerd...${GRAY_LIGHT}"
   printf "\n\n"
 
-
   sleep 2
-
 }
 
 #######################################
-# bloquear system
-# Arguments:
-#   None
+# Blokkeer systeem
+# Argumenten:
+#   Geen
 #######################################
 configurar_bloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos bloquear o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Blokkeren van Whaticket...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -130,21 +125,20 @@ EOF
   sleep 2
 
   print_banner
-  printf "${WHITE} 💻 Bloqueio da Instancia/Empresa ${empresa_bloquear} realizado com sucesso ...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Blokkeren van instantie/bedrijf ${empresa_bloquear} is succesvol uitgevoerd...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 }
 
-
 #######################################
-# desbloquear system
-# Arguments:
-#   None
+# Deblokkeer systeem
+# Argumenten:
+#   Geen
 #######################################
 configurar_desbloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Desbloquear o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Deblokkeren van Whaticket...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -157,23 +151,23 @@ EOF
   sleep 2
 
   print_banner
-  printf "${WHITE} 💻 Desbloqueio da Instancia/Empresa ${empresa_desbloquear} realizado com sucesso ...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Deblokkeren van instantie/bedrijf ${empresa_desbloquear} is succesvol uitgevoerd...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 }
 
 #######################################
-# alter dominio system
-# Arguments:
-#   None
+# Wijzig domein systeem
+# Argumenten:
+#   Geen
 #######################################
 configurar_dominio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Alterar os Dominios do Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Wijzig domeinen van Whaticket...${GRAY_LIGHT}"
   printf "\n\n"
 
-sleep 2
+  sleep 2
 
   sudo su - root <<EOF
   cd && rm -rf /etc/nginx/sites-enabled/${empresa_dominio}-frontend
@@ -262,20 +256,20 @@ EOF
   sleep 2
 
   print_banner
-  printf "${WHITE} 💻 Alteração de dominio da Instancia/Empresa ${empresa_dominio} realizado com sucesso ...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Wijziging van domeinen voor instantie/bedrijf ${empresa_dominio} is succesvol uitgevoerd...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 }
 
 #######################################
-# installs node
-# Arguments:
-#   None
+# Installeer Node.js
+# Argumenten:
+#   Geen
 #######################################
 system_node_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando nodejs...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Node.js installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -290,20 +284,20 @@ system_node_install() {
   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
   sudo apt-get update -y && sudo apt-get -y install postgresql
   sleep 2
-  sudo timedatectl set-timezone America/Sao_Paulo
-  
+  sudo timedatectl set-timezone Europe/Amsterdam
 EOF
 
   sleep 2
 }
+
 #######################################
-# installs docker
-# Arguments:
-#   None
+# Installeer Docker
+# Argumenten:
+#   Geen
 #######################################
 system_docker_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando docker...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Docker installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -324,19 +318,13 @@ EOF
 }
 
 #######################################
-# Ask for file location containing
-# multiple URL for streaming.
-# Globals:
-#   WHITE
-#   GRAY_LIGHT
-#   BATCH_DIR
-#   PROJECT_ROOT
-# Arguments:
-#   None
+# Installeer Puppeteer-afhankelijkheden
+# Argumenten:
+#   Geen
 #######################################
 system_puppeteer_dependencies() {
   print_banner
-  printf "${WHITE} 💻 Instalando puppeteer dependencies...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Puppeteer-afhankelijkheden installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -391,33 +379,32 @@ EOF
 }
 
 #######################################
-# installs pm2
-# Arguments:
-#   None
+# Installeer PM2
+# Argumenten:
+#   Geen
 #######################################
 system_pm2_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando pm2...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 PM2 installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - root <<EOF
   npm install -g pm2
-
 EOF
 
   sleep 2
 }
 
 #######################################
-# installs snapd
-# Arguments:
-#   None
+# Installeer Snapd
+# Argumenten:
+#   Geen
 #######################################
 system_snapd_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando snapd...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Snapd installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -432,13 +419,13 @@ EOF
 }
 
 #######################################
-# installs certbot
-# Arguments:
-#   None
+# Installeer Certbot
+# Argumenten:
+#   Geen
 #######################################
 system_certbot_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando certbot...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Certbot installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -453,13 +440,13 @@ EOF
 }
 
 #######################################
-# installs nginx
-# Arguments:
-#   None
+# Installeer Nginx
+# Argumenten:
+#   Geen
 #######################################
 system_nginx_install() {
   print_banner
-  printf "${WHITE} 💻 Instalando nginx...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Nginx installeren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -473,13 +460,13 @@ EOF
 }
 
 #######################################
-# restarts nginx
-# Arguments:
-#   None
+# Herstart Nginx
+# Argumenten:
+#   Geen
 #######################################
 system_nginx_restart() {
   print_banner
-  printf "${WHITE} 💻 reiniciando nginx...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Nginx herstarten...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -492,13 +479,13 @@ EOF
 }
 
 #######################################
-# setup for nginx.conf
-# Arguments:
-#   None
+# Configuratie voor Nginx.conf
+# Argumenten:
+#   Geen
 #######################################
 system_nginx_conf() {
   print_banner
-  printf "${WHITE} 💻 configurando nginx...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Nginx configureren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -515,13 +502,13 @@ EOF
 }
 
 #######################################
-# installs nginx
-# Arguments:
-#   None
+# Configuratie Certbot
+# Argumenten:
+#   Geen
 #######################################
 system_certbot_setup() {
   print_banner
-  printf "${WHITE} 💻 Configurando certbot...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Certbot configureren...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
